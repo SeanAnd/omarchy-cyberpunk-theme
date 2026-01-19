@@ -17,6 +17,8 @@ My first public Omarchy theme. I wanted something with a proper cyberpunk vibe, 
 
 The color scheme is built around red and cyan with a near-black background. The waybar has animated glowing icons and a glitchy active workspace indicator. OLED screens will love this.
 
+![preview](preview.png)
+
 > Based on [Aetheria](https://github.com/JJDizz1L/aetheria) by Dizziee
 
 ## Installation
