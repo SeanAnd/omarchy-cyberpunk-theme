@@ -27,17 +27,17 @@ Pick one:
 
 **Terminal**
 ```
-omarchy-theme-install https://github.com/SeanAnd/cyberpunk.git
+omarchy-theme-install https://github.com/SeanAnd/omarchy-cyberpunk-theme.git
 ```
 
 **Walker Menu**
-1. Copy: `https://github.com/SeanAnd/cyberpunk.git`
+1. Copy: `https://github.com/SeanAnd/omarchy-cyberpunk-theme.git`
 2. Open Walker (`SUPER+ALT+SPACE`), go to Install > Style > Theme
 3. Paste and hit enter
 
 ## What's Included
 
-- Full color scheme for terminals (Alacritty, Kitty, Ghostty)
+- Full color scheme via colors.toml
 - Waybar styling with glow and glitch animations
 - Themes for Zed, Neovim, btop, Discord (Vencord), and more
 - A couple cyberpunk wallpapers
