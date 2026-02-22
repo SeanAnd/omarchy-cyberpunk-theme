@@ -39,12 +39,8 @@ omarchy-theme-install https://github.com/SeanAnd/omarchy-cyberpunk-theme.git
 
 - Full color scheme via colors.toml
 - Waybar styling with glow and glitch animations
-- Themes for Zed, Neovim, btop, Discord (Vencord), and more
+- Themes for Zed, Neovim, btop, and more
 - A couple cyberpunk wallpapers
-
-## Discord Theme
-
-If you use Vencord/Equicord/Vesktop, copy `vencord.theme.css` to your themes folder and enable it. Or just use [omarchy-theme-hook](https://github.com/imbypass/omarchy-theme-hook) and it handles everything.
 
 ## Credits
 
