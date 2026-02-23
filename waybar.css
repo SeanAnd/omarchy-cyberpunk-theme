@@ -1,34 +1,76 @@
 @define-color foreground #26bdfd;
-@define-color background transparent;
-@define-color ternary #ff1100;
+@define-color background #090300;
+@define-color glow #b5e4f4;
+@define-color bordercolor #ff3c3c;
 /* hex for black/background is #090300 */
 /* hex for old foreground #ff1100 */
+
+window#waybar,
+window#waybar arrow,
+window#waybar box,
+window#waybar button,
+window#waybar widget,
+window#waybar label,
+window#waybar image,
+window#waybar window,
+window#waybar revealer,
+window#waybar decoration,
+window#waybar menuitem {
+  background-color: transparent;
+}
+
+tooltip label,
+tooltip box,
+tooltip.background,
+tooltip decoration,
+tooltip > decoration {
+  background-color: transparent;
+}
+
+window#waybar .modules-right,
+window#waybar .modules-left,
+window#waybar .modules-center {
+  background-color: rgba(9, 3, 0, 0.5);
+}
+
+tooltip,
+window#waybar menu {
+  background-color: rgba(9, 3, 0, 0.75);
+  border: 1px solid @bordercolor;
+  border-radius: 6px;
+}
+
+tooltip label,
+window#waybar menuitem {
+  color: @foreground;
+  animation: terminal-glow 7.5s ease-in-out infinite alternate;
+}
 
 @keyframes terminal-glow {
   from {
     text-shadow:
-      0 0 1px #b5e4f4,
-      0 0 2px #b5e4f4;
+      0 0 1px @glow,
+      0 0 2px @glow;
   }
   to {
     text-shadow:
-      0 0 3px #b5e4f4,
-      0 0 4px #b5e4f4;
+      0 0 3px @glow,
+      0 0 4px @glow;
   }
 }
 
 @keyframes glitch {
   from {
     opacity: 1;
-    text-shadow: 0 0 4px #090300;
-    color: #090300;
+    text-shadow: 0 0 4px @background;
+    color: @background;
   }
   to {
     opacity: 0.85;
     text-shadow:
-      -0.75px 0 #090300,
-      0.75px 0 #26bdfd;
-    color: #090300;
+      -0.75px 0 @background,
+      0.75px 0 @foreground;
+    color: @background;
   }
 }
 
@@ -44,16 +86,24 @@
 #custom-expand-icon,
 #custom-voxtype {
   text-shadow:
-    0 0 4px #b5e4f4,
-    0 0 8px #b5e4f4;
+    0 0 4px @glow,
+    0 0 8px @glow;
+  animation: terminal-glow 5s ease-in-out infinite alternate;
+}
+
+#workspaces button label {
+  text-shadow:
+    0 0 4px @glow,
+    0 0 8px @glow;
   animation: terminal-glow 5s ease-in-out infinite alternate;
 }
 
 #workspaces button.active {
+  color: green;
   text-shadow:
-    -1px 0 #b5e4f4,
-    1px 0 #26bdfd,
-    0 0 4px #b5e4f4;
+    -1px 0 @glow,
+    1px 0 @foreground,
+    0 0 4px @glow;
   animation: glitch 0.3s ease-in-out infinite alternate;
 }
 
@@ -64,13 +114,5 @@
   padding: 0.3rem 0.7rem;
   margin: 5px 0px;
   border-radius: 6px;
-  border: 1px solid #ff3c3c;
-}
-
-tooltip {
-  color: #b5e4f4;
-  background-color: rgba(9, 3, 0, 0.5);
-  border: 1px solid #ff3c3c;
-  border-radius: 6px;
-  animation: terminal-glow 7.5s ease-in-out infinite alternate;
+  border: 1px solid @bordercolor;
 }
