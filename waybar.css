@@ -2,9 +2,13 @@
 @define-color background #9a0000;
 @define-color glow #b5e4f4;
 @define-color bordercolor #ff4040;
-/* hex for new dark red background is #400000 */
+/* hex for new dark red background is #400000 for tooltip and #2b0000 for waybar */
 
-window#waybar,
+window#waybar {
+  background-color: rgba(43, 0, 0, 0.5);
+  border-bottom: 2px solid @bordercolor;
+}
+
 window#waybar arrow,
 window#waybar box,
 window#waybar button,
@@ -25,15 +29,9 @@ tooltip > decoration {
   background-color: transparent;
 }
 
-window#waybar .modules-right,
-window#waybar .modules-left,
-window#waybar .modules-center {
-  background-color: rgba(64, 0, 0, 0.5);
-}
-
 tooltip.background,
 window#waybar menu {
-  background-color: rgba(64, 0, 0, 0.75);
+  background-color: rgba(64, 0, 0, 0.5);
   border: 1px solid @bordercolor;
 }
 
@@ -109,5 +107,4 @@ window#waybar menuitem {
 .modules-center {
   padding: 0.3rem 0.7rem;
   margin: 5px 0px;
-  border: 1px solid @bordercolor;
 }
