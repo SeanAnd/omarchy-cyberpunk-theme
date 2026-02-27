@@ -1,9 +1,8 @@
 @define-color foreground #26bdfd;
-@define-color background #090300;
+@define-color background #9a0000;
 @define-color glow #b5e4f4;
-@define-color bordercolor #ff3c3c;
-/* hex for black/background is #090300 */
-/* hex for old foreground #ff1100 */
+@define-color bordercolor #ff4040;
+/* hex for new dark red background is #400000 */
 
 window#waybar,
 window#waybar arrow,
@@ -21,7 +20,6 @@ window#waybar menuitem {
 
 tooltip label,
 tooltip box,
-tooltip.background,
 tooltip decoration,
 tooltip > decoration {
   background-color: transparent;
@@ -30,14 +28,13 @@ tooltip > decoration {
 window#waybar .modules-right,
 window#waybar .modules-left,
 window#waybar .modules-center {
-  background-color: rgba(9, 3, 0, 0.5);
+  background-color: rgba(64, 0, 0, 0.5);
 }
 
-tooltip,
+tooltip.background,
 window#waybar menu {
-  background-color: rgba(9, 3, 0, 0.75);
+  background-color: rgba(64, 0, 0, 0.75);
   border: 1px solid @bordercolor;
-  border-radius: 6px;
 }
 
 tooltip label,
@@ -110,9 +107,7 @@ window#waybar menuitem {
 .modules-right,
 .modules-left,
 .modules-center {
-  background-color: rgba(9, 3, 0, 0.5);
   padding: 0.3rem 0.7rem;
   margin: 5px 0px;
-  border-radius: 6px;
   border: 1px solid @bordercolor;
 }
