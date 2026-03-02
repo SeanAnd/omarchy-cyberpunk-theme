@@ -1,6 +1,27 @@
-@define-color selected-text #fded02;
-@define-color text #ff3c3c;
+@define-color selected-text #26bdfd;
+@define-color selected-item-bg #900a00;
+@define-color text #26bdfd;
 @define-color base #090300;
 @define-color border #5c5855;
 @define-color foreground #090300;
-@define-color background #090300;
+@define-color background rgba(40, 0, 0, 0.75);
+@define-color search-background rgba(20, 0, 0, 0.75);
+@define-color border #ff4040;
+
+window {
+  border-color: @border;
+}
+
+window .box-wrapper {
+  background-color: @background;
+}
+
+window .search-container {
+  background-color: @search-background;
+  border: 1px solid @border;
+}
+
+window child:selected .item-box {
+  background-color: @selected-item-bg;
+  color: @selected-text;
+}
