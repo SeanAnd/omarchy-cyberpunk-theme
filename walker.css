@@ -1,6 +1,6 @@
 @define-color selected-text #26bdfd;
-@define-color selected-item-bg #900a00;
-@define-color text #26bdfd;
+@define-color selected-item-bg rgba(5, 39, 54, 0.75);
+@define-color text #ff1100;
 @define-color base #090300;
 @define-color border #5c5855;
 @define-color foreground #090300;
@@ -24,4 +24,5 @@ window .search-container {
 window child:selected .item-box {
   background-color: @selected-item-bg;
   color: @selected-text;
+  border: 2px solid @selected-text;
 }
