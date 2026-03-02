@@ -1,6 +1,6 @@
 # Background & Text
 theme[main_fg]="#26bdfd"
-theme[main_bg]="#090300"
+theme[main_bg]=""
 theme[title]="#26bdfd"
 theme[subtitle]="#ffffff"
 theme[hi_fg]="#ff1100"
@@ -17,18 +17,18 @@ theme[div_line]="#ff1100"
 # Graphs
 theme[graph_text]="#b5e4f4"
 theme[cpu_graph]="#26bdfd"
-theme[mem_graph]="#01a252"
+theme[mem_graph]="#27a75c"
 theme[net_send]="#b5e4f4"
 theme[net_recv]="#ff9494"
 
-# Temperature Gradient (Red to Orange)
+# Temperature Gradient
 theme[temp_start]="#ff1100"
 theme[temp_mid]="#ff3c3c"
 theme[temp_end]="#cdab53"
 
 # Highlight & Selection
-theme[sel_bg]="#ff3c3c"
-theme[sel_fg]="#090300"
+theme[sel_bg]="#ffcf3d"
+theme[sel_fg]="#27a75c"
 theme[sel_frame]="#ff3c3c"
 
 # Bar Colors (CPU/Mem usage)
@@ -36,8 +36,8 @@ theme[bar_fg]="#ff3c3c"
 theme[bar_bg]="#3a3432"
 
 # Colors of selected item in processes box
-theme[selected_bg]="#26bdfd"
-theme[selected_fg]="#ff1100"
+theme[selected_bg]="#ffcf3d"
+theme[selected_fg]="#090300"
 
 # Misc
 theme[border_label]="#26bdfd"
@@ -46,6 +46,25 @@ theme[low_battery]="#ff1100"
 theme[proc_misc]="#b5e4f4"
 
 # CPU Graphs
-theme[cpu_start]="#01a252"
+theme[cpu_start]="#27a75c"
 theme[cpu_mid]="#cdab53"
 theme[cpu_end]="#ff9494"
+
+# Download
+theme[download_start]="#ff1100"
+theme[download_mid]="#ffcf3d"
+theme[download_end]="#27a75c"
+
+# Upload
+theme[upload_start]="#ff1100"
+theme[upload_mid]="#ffcf3d"
+theme[upload_end]="#27a75c"
+
+# Thnks fr th Mmrs
+theme[free_start]="27a75c"
+theme[free_mid]="#ffcf3d"
+theme[free_end]="#ff1100"
+
+theme[used_start]="#27a75c"
+theme[used_mid]="#ffcf3d"
+theme[used_end]="#ff1100"
