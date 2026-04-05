@@ -1,0 +1,367 @@
+:root {
+  --color00: #320000; /* background color  */
+  --color01: #9a0000;
+  --color02: #26bdfd;
+  --color03: #b5e4f4;
+  --color04: #ff4040;
+  --color05: #931010;
+  --color06: #052736;
+}
+
+@keyframes terminal-glow {
+  from {
+    text-shadow:
+      0 0 1px @glow,
+      0 0 2px @glow;
+  }
+  to {
+    text-shadow:
+      0 0 3px @glow,
+      0 0 4px @glow;
+  }
+}
+
+.theme-light,
+.theme-dark,
+.theme-darker,
+.theme-midnight,
+.visual-refresh {
+  /* ==================BACKGROUND COLORS===================== */
+
+  /* server, channel and top bar background color */
+  --background-base-lowest: var(--color00) !important;
+
+  /* chat area/current channel background color */
+  --background-base-lower: var(--color00) !important;
+
+  /* current user and mute/sound/settings card background
+   * this also effects the settings window right side */
+  --background-base-low: var(--color01) !important;
+
+  /* tooltip message link and emoji picker background colors */
+  --background-surface-high: var(--color01) !important;
+
+  /* mentioned background color */
+
+  /* =================TEXT COLORS============================ */
+
+  /* this sets the text color for messsages and embedded description of links */
+  --text-default: var(--color02) !important;
+
+  /* this controls the selected channels text color AND the user names text color in the current channel */
+  --text-strong: var(--color02) !important;
+
+  /* this controls the text color for your current status and if you hover over it your actual username */
+  --text-subtle: var(--color02) !important;
+
+  /* this is for the "new messages" text on the channel */
+  --text-brand: var(--color03) !important;
+
+  /* default channel text color */
+  --channels-default: var(--color02) !important;
+
+  /* scrollbar color */
+  --scrollbar-auto-thumb: var(--color04) !important;
+  --scrollbar-auto-track: transparent;
+  --scrollbar-thin-thumb: var(--color04) !important;
+  --scrollbar-thin-track: transparent;
+
+  /* channel text and side icon color of channels with unread messages */
+  --interactive-text-active: var(--color03) !important;
+
+  /* this color controls what highlight to the currently selected channel */
+  --interactive-background-selected: transparent !important;
+
+  /* ==================ICON COLORS=========================== */
+
+  /* this is the default color for channel icons */
+  --channel-icon: var(--color02) !important;
+
+  /* this is the icon color for inactive channels with unread messages AND the servers/volume/mute/settings/ buttons */
+  --icon-subtle: var(--color03) !important;
+
+  /* this is for the currently selected channels icon color and the action icon that appears on hover */
+  --icon-strong: var(--color02) !important;
+
+  /* this sets the bg color of the 'new' button in browse channel bar */
+  --badge-background-brand: var(--color02) !important;
+
+  /* ==================BORDER COLORS========================= */
+
+  /* this is for tooltip, embedded links, code snippets and the bottom of the server top bar above chat */
+  --border-subtle: var(--color02) !important;
+
+  /* this effects the left thick border of link embedded descriptions */
+  --border-normal: var(--color02) !important;
+}
+
+/* this makes the background transparent for the sidebar, topbar, and chat. */
+[class*="wrapper_ef3116"],
+[class*="container__2637a"],
+[class*="chat_f75fb0"],
+[class*="container__9293f"],
+[class*="chatContent_f75fb0"] {
+  background: transparent !important;
+}
+
+/* this is for the overall background. A nice faded linear gradient that makes you want to slap yo momma */
+[class*="base__5e434"] {
+  background-image: linear-gradient(
+    135deg,
+    var(--color00) 0%,
+    var(--color00) 20%,
+    black 50%,
+    black 100%
+  );
+}
+
+/* random "new" button/badge thats near the brows channels */
+[class*="base__2b1f5"] {
+  background-color: var(--color06) !important;
+  color: var(--color03) !important;
+}
+
+/* divider that sits below browse channels */
+[class*="sectionDivider__629e4"] {
+  background-color: var(--color04) !important;
+}
+
+/* this makes any link descriptions background transparent */
+[class*="embedFull__623de"] {
+  background: transparent !important;
+}
+
+/* ========================Channels=========================*/
+/* this is the actual container box for channels */
+[class*="iconVisibility_c69b6d"] {
+  padding: 0.2rem;
+}
+
+/* this modifies the channel boxes visible hover area. the lastchild ensures we avoid modifying the unread icons  */
+[class*="iconVisibility_c69b6d"] > div:last-child {
+  --border-size: 1px;
+  --border-color: var(--color01);
+  --fill-color: black;
+
+  position: relative;
+  isolation: isolate;
+}
+
+/* all this is to add  bevel the edges. Draw 3 layers, make the one in the back slightly larger with our desired border color */
+/* outer shape = border color */
+[class*="iconVisibility_c69b6d"] > div:last-child::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--border-color);
+  clip-path: polygon(
+    14px 0,
+    100% 0,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    0 100%,
+    0 14px
+  );
+  z-index: 0;
+}
+
+/* inner shape = actual panel fill */
+[class*="iconVisibility_c69b6d"] > div:last-child::after {
+  content: "";
+  position: absolute;
+  inset: var(--border-size);
+  background: var(--fill-color);
+  clip-path: polygon(
+    calc(15px - var(--border-size)) 0,
+    100% 0,
+    100% calc(100% - (15px - var(--border-size))),
+    calc(100% - (15px - var(--border-size))) 100%,
+    0 100%,
+    0 calc(15px - var(--border-size))
+  );
+  z-index: 1;
+}
+
+/* real content stays above both layers */
+[class*="iconVisibility_c69b6d"] > div:last-child > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* this attaches out sweet terminal glow animation to the unread channels */
+[class*="iconVisibility_c69b6d"].modeUnreadImportant__2ea32
+  > div:last-child
+  > * {
+  text-shadow:
+    0 0 4px var(--color03),
+    0 0 8px var(--color03);
+  animation: terminal-glow 0.25s ease-in-out infinite alternate;
+}
+
+/* this sets the selected channels bevel background color */
+[class*="iconVisibility_c69b6d"].selectedChannel_c69b6d
+  > div:last-child::after {
+  background: var(--color05) !important;
+}
+
+/* sets the select channels  beveled border color */
+[class*="iconVisibility_c69b6d"].selectedChannel_c69b6d
+  > div:last-child::before {
+  background: var(--color04) !important;
+}
+
+/* =====================Chat======================== */
+
+[class*="markup__75297"].messageContent_c19a55 {
+  --bubble-bg: var(--color06);
+  --bubble-border: var(--color03);
+  --bubble-pad-x: 0.5rem;
+  --bubble-pad-y: 0.5rem;
+  --content-offset: var(--custom-message-margin-left-content-cozy);
+
+  --border: 1px;
+  --bevel: 14px;
+  --tail-x: 8px;
+  --tail-y: 6px;
+  --tail-grow: 1px;
+  --tail-bottom-inset: 1px;
+
+  position: relative;
+  isolation: isolate;
+  overflow: visible !important;
+  background: transparent !important;
+
+  padding-block: var(--bubble-pad-y);
+  padding-inline-start: calc(var(--content-offset) + var(--bubble-pad-x));
+  padding-inline-end: var(--bubble-pad-x);
+}
+
+/* outer shell: border + tail + bevel */
+[class*="markup__75297"].messageContent_c19a55::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: calc(var(--content-offset) - var(--tail-x) - var(--tail-grow));
+  background: var(--bubble-border);
+  clip-path: polygon(
+    0 var(--tail-y),
+    calc(var(--tail-x) + var(--tail-grow)) 0,
+    100% 0,
+    100% calc(100% - var(--bevel)),
+    calc(100% - var(--bevel) + 3px) 100%,
+    calc(var(--tail-x) + var(--tail-grow)) 100%,
+    calc(var(--tail-x) + var(--tail-grow)) calc(var(--tail-y) * 2),
+    0 var(--tail-y)
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* inner fill */
+[class*="markup__75297"].messageContent_c19a55::after {
+  content: "";
+  position: absolute;
+  top: var(--border);
+  right: var(--border);
+  bottom: var(--border);
+  left: calc(var(--content-offset) - var(--tail-x) + var(--border));
+  background: var(--bubble-bg);
+  clip-path: polygon(
+    0 calc(var(--tail-y) - var(--border)),
+    calc(var(--tail-x) - var(--border)) 0,
+    100% 0,
+    100% calc(100% - (var(--bevel) - var(--border))),
+    calc(100% - (var(--bevel) - var(--border)) + 1px) 100%,
+    calc(var(--tail-x) + var(--tail-bottom-inset)) calc(100% - var(--border)),
+    calc(var(--tail-x) + var(--tail-bottom-inset))
+      calc((var(--tail-y) * 2) - var(--border)),
+    0 calc(var(--tail-y) - var(--border))
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+[class*="markup__75297"].messageContent_c19a55 > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* reply line height so it's still visible after padding */
+[class*="repliedTextPreview_c19a55"] {
+  max-height: 1.75rem;
+}
+
+/*===========================Current User Card====================*/
+
+[class*="panels__5e434"] {
+  --panel-fill: black;
+  --panel-border: var(--color04);
+  --panel-border-size: 1px;
+  --panel-bevel-outer: 14px;
+  --panel-bevel-inner: 13px;
+
+  isolation: isolate;
+  background: transparent !important;
+}
+
+/* outer shell = border */
+[class*="panels__5e434"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--panel-border);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--panel-bevel-outer) 100%,
+    0 calc(100% - var(--panel-bevel-outer) + 2px)
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* inner fill */
+[class*="panels__5e434"]::after {
+  content: "";
+  position: absolute;
+  inset: var(--panel-border-size);
+  background: var(--panel-fill);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--panel-bevel-inner) 100%,
+    0 calc(100% - var(--panel-bevel-inner))
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* keep real content above the layers */
+[class*="panels__5e434"] > * {
+  position: relative;
+  z-index: 1;
+}
+
+[class*="lottieIcon__5eb9b"] {
+  --__lottieIconColor: var(--color02) !important;
+}
+
+/* ========================CHAT INPUT BAR=================*/
+
+[class*="scrollableContainer__74017"] {
+  background: var(--color06) !important;
+}
+
+/* smiley face icon */
+[class*="sprite__04eed"] {
+  background: var(--color02) !important;
+}
+
+[class*="attachButtonPlus__0923f"],
+[class*="attachButton__0923f"] {
+  fill: var(--color02) !important;
+}
