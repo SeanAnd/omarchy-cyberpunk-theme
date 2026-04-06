@@ -132,6 +132,7 @@
 }
 
 /* ========================Channels=========================*/
+
 /* this is the actual container box for channels */
 [class*="iconVisibility_c69b6d"] {
   padding: 0.2rem;
@@ -210,6 +211,15 @@
   background: var(--color04) !important;
 }
 
+/* this fixes bottom margin on channel scrollbar */
+[class*="scroller__629e4"] {
+  margin-bottom: 1.5rem;
+}
+
+[class*="iconVisibility_c69b6d"] > div:last-child:hover::after {
+  background: var(--color00) !important;
+}
+
 /* =====================Chat======================== */
 
 [class*="markup__75297"].messageContent_c19a55 {
@@ -250,7 +260,7 @@
     calc(var(--tail-x) + var(--tail-grow)) 0,
     100% 0,
     100% calc(100% - var(--bevel)),
-    calc(100% - var(--bevel) + 3px) 100%,
+    calc(100% - var(--bevel)) 100%,
     calc(var(--tail-x) + var(--tail-grow)) 100%,
     calc(var(--tail-x) + var(--tail-grow)) calc(var(--tail-y) * 2),
     0 var(--tail-y)
@@ -272,11 +282,10 @@
     0 calc(var(--tail-y) - var(--border)),
     calc(var(--tail-x) - var(--border)) 0,
     100% 0,
-    100% calc(100% - (var(--bevel) - var(--border))),
-    calc(100% - (var(--bevel) - var(--border)) + 1px) 100%,
-    calc(var(--tail-x) + var(--tail-bottom-inset)) calc(100% - var(--border)),
-    calc(var(--tail-x) + var(--tail-bottom-inset))
-      calc((var(--tail-y) * 2) - var(--border)),
+    100% calc(100% - (var(--bevel))),
+    calc(100% - (var(--bevel))) 100%,
+    var(--tail-x) 100%,
+    var(--tail-x) calc(var(--tail-y) * 2),
     0 calc(var(--tail-y) - var(--border))
   );
   z-index: 0;
@@ -300,7 +309,7 @@
   --panel-border: var(--color04);
   --panel-border-size: 1px;
   --panel-bevel-outer: 14px;
-  --panel-bevel-inner: 13px;
+  --panel-bevel-inner: 14px;
 
   isolation: isolate;
   background: transparent !important;
@@ -317,7 +326,7 @@
     100% 0,
     100% 100%,
     var(--panel-bevel-outer) 100%,
-    0 calc(100% - var(--panel-bevel-outer) + 2px)
+    0 calc(100% - var(--panel-bevel-outer))
   );
   z-index: 0;
   pointer-events: none;
@@ -364,4 +373,78 @@
 [class*="attachButtonPlus__0923f"],
 [class*="attachButton__0923f"] {
   fill: var(--color02) !important;
+}
+
+/*============================+TOOLTIPS======================*/
+
+/* this is for the channel tooltip that pops up on hover */
+[class*="popover_d6f39b"] {
+  background: black !important;
+  box-shadow:
+    inset 1px 1px 0px 0px var(--color01),
+    /* top-left */ inset -1px 1px 0px 0px var(--color01),
+    /* top-right */ inset 1px -1px 0px 0px var(--color01),
+    /* bottom-left */ inset -1px -1px 0px 0px var(--color01); /* bottom-right */
+}
+
+[class*="list__76f04"] > div.row__76f04 {
+  --border-size: 1px;
+  --border-color: var(--color01);
+  --fill-color: black;
+
+  position: relative;
+  isolation: isolate;
+}
+
+[class*="list__76f04"] > div.row__76f04::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--border-color);
+  clip-path: polygon(
+    14px 0,
+    100% 0,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    0 100%,
+    0 14px
+  );
+  z-index: 0;
+}
+
+[class*="list__76f04"] > div.row__76f04::after {
+  content: "";
+  position: absolute;
+  inset: var(--border-size);
+  background: var(--fill-color);
+  clip-path: polygon(
+    calc(15px - var(--border-size)) 0,
+    100% 0,
+    100% calc(100% - (15px - var(--border-size))),
+    calc(100% - (15px - var(--border-size))) 100%,
+    0 100%,
+    0 calc(15px - var(--border-size))
+  );
+  z-index: 1;
+}
+
+[class*="list__76f04"] > div.row__76f04 > * {
+  position: relative;
+  z-index: 2;
+  color: var(--color02) !important;
+}
+
+/* swap the custom fill color on hover */
+[class*="list__76f04"] > div.row__76f04:hover::after {
+  background: var(--color00) !important;
+}
+
+/* custom tooltip styling */
+[class*="tooltip__4e35b"] {
+  background: black !important;
+  box-shadow:
+    inset 1px 1px 0px 0px var(--color01),
+    /* top-left */ inset -1px 1px 0px 0px var(--color01),
+    /* top-right */ inset 1px -1px 0px 0px var(--color01),
+    /* bottom-left */ inset -1px -1px 0px 0px var(--color01); /* bottom-right */
 }
