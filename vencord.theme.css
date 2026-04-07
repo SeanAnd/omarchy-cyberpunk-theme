@@ -31,7 +31,7 @@
   /* server, channel and top bar background color */
   --background-base-lowest: var(--color00) !important;
 
-  /* chat area/current channel background color */
+  /* chat area/current channel background color and random button backgrounds */
   --background-base-lower: var(--color00) !important;
 
   /* current user and mute/sound/settings card background
@@ -39,7 +39,10 @@
   --background-base-low: var(--color01) !important;
 
   /* tooltip message link and emoji picker background colors */
-  --background-surface-high: var(--color01) !important;
+  --background-surface-high: black !important;
+
+  /* any background that is the dark blue discord */
+  --background-brand: var(--color05) !important;
 
   /* mentioned background color */
 
@@ -48,7 +51,7 @@
   /* this sets the text color for messsages and embedded description of links */
   --text-default: var(--color02) !important;
 
-  /* this controls the selected channels text color AND the user names text color in the current channel */
+  /* this controls the selected channels text color, right-click menu text AND the user names text color in the current channel */
   --text-strong: var(--color02) !important;
 
   /* this controls the text color for your current status and if you hover over it your actual username */
@@ -65,6 +68,9 @@
   --scrollbar-auto-track: transparent;
   --scrollbar-thin-thumb: var(--color04) !important;
   --scrollbar-thin-track: transparent;
+
+  /* this actually controls some svg icon colors  */
+  --interactive-text-default: var(--color02) !important;
 
   /* channel text and side icon color of channels with unread messages */
   --interactive-text-active: var(--color03) !important;
@@ -83,6 +89,9 @@
   /* this is for the currently selected channels icon color and the action icon that appears on hover */
   --icon-strong: var(--color02) !important;
 
+  /* this is fo the channel search icons */
+  --icon-muted: var(--color02) !important;
+
   /* this sets the bg color of the 'new' button in browse channel bar */
   --badge-background-brand: var(--color02) !important;
 
@@ -93,6 +102,18 @@
 
   /* this effects the left thick border of link embedded descriptions */
   --border-normal: var(--color02) !important;
+
+  /* this sets the check icon for the checkboxes color */
+  --checkbox-icon-active: var(--color03) !important;
+
+  /* this sets the background color for the selected checkbox */
+  --checkbox-background-selected-default: var(--color02) !important;
+
+  /* radio button outer circle color */
+  --radio-background-selected-default: var(--color02) !important;
+
+  /* radio inner circle color */
+  --radio-border-selected-default: var(--color03) !important;
 }
 
 /* this makes the background transparent for the sidebar, topbar, and chat. */
@@ -100,7 +121,17 @@
 [class*="container__2637a"],
 [class*="chat_f75fb0"],
 [class*="container__9293f"],
-[class*="chatContent_f75fb0"] {
+[class*="chatContent_f75fb0"],
+[class*="scroller__99e7c"],
+[class*="privateChannels_e6b769"],
+[class*="container__133bf"],
+[class*="tabBody__133bf"],
+[class*="content_e9e3ed"],
+[class*="contentHeader_e9e3ed"],
+[class*="wrapper__4e6ce"],
+[class*="inspector_aeaaeb"],
+[class*="wrapper__4e6ce"],
+[id*="gif-picker-tab-panel"] {
   background: transparent !important;
 }
 
@@ -362,7 +393,7 @@
 /* ========================CHAT INPUT BAR=================*/
 
 [class*="scrollableContainer__74017"] {
-  background: var(--color06) !important;
+  background: transparent !important;
 }
 
 /* smiley face icon */
@@ -373,6 +404,64 @@
 [class*="attachButtonPlus__0923f"],
 [class*="attachButton__0923f"] {
   fill: var(--color02) !important;
+}
+
+[class*="channelTextArea_f75fb0"] {
+  background: transparent !important;
+  --panel-border-size: 1px;
+  --panel-bevel-outer: 15px;
+  --panel-bevel-inner: 15px;
+
+  isolation: isolate;
+}
+
+[class*="channelTextArea_f75fb0"] {
+  position: relative;
+  isolation: isolate;
+}
+
+[class*="channelTextArea_f75fb0"]:focus-within {
+  border: none;
+}
+
+/* outer shell = border, only when focused */
+[class*="channelTextArea_f75fb0"]:focus-within::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color02) !important;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--panel-bevel-outer)),
+    calc(100% - var(--panel-bevel-outer)) 100%,
+    0 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* inner fill */
+[class*="channelTextArea_f75fb0"]::after {
+  content: "";
+  position: absolute;
+  inset: var(--panel-border-size);
+  background: var(--color06);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--panel-bevel-inner)),
+    calc(100% - var(--panel-bevel-inner)) 100%,
+    0 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* keep real content above the layers */
+[class*="channelTextArea_f75fb0"] > * {
+  position: relative;
+  z-index: 1;
 }
 
 /*============================+TOOLTIPS======================*/
@@ -447,4 +536,69 @@
     /* top-left */ inset -1px 1px 0px 0px var(--color01),
     /* top-right */ inset 1px -1px 0px 0px var(--color01),
     /* bottom-left */ inset -1px -1px 0px 0px var(--color01); /* bottom-right */
+}
+
+/* Emoji tooltip */
+[class*="popover_f84418"] {
+  background: var(--color00) !important;
+}
+
+/* the actual tooltip popup hover event */
+[class*="popover_f84418"]:hover {
+  border: 1px solid var(--color04) !important;
+}
+
+/* hover color for the buttons in the tooltip */
+[class*="hoverBarButton_f84418"]:hover {
+  background: var(--color06) !important;
+}
+
+/* this is the menu popup that appears when you right click servers or channels and chat messages */
+[class*="menu_c1e9c4"] {
+  background: var(--color00) !important;
+  border: 0px !important;
+  border-radius: 0px !important;
+  box-shadow:
+    inset 1px 1px 0px 0px var(--color04),
+    /* top-left */ inset -1px 1px 0px 0px var(--color04),
+    /* top-right */ inset 1px -1px 0px 0px var(--color04),
+    /* bottom-left */ inset -1px -1px 0px 0px var(--color04); /* bottom-right */
+}
+
+/* separator color */
+[class*="separator_c1e9c4"] {
+  border-bottom: 1px solid var(--color04) !important;
+}
+
+/* all label and subtext text in menu popup */
+[class*="label_c1e9c4"],
+[class*="subtext_c1e9c4"] {
+  color: var(--color04) !important;
+}
+
+/* we specifically target the label text/subtext to override the above. Can't place below due to order of operations */
+[class*="scroller_c1e9c4"] .item_c1e9c4:hover [class*="label_c1e9c4"],
+[class*="scroller_c1e9c4"]
+  .item_c1e9c4:hover
+  [class*="label_c1e9c4"]
+  [class*="subtext_c1e9c4"] {
+  color: var(--color02) !important;
+}
+
+/* this targets all hover events on the right-click menu items */
+[class*="scroller_c1e9c4"] .item_c1e9c4:hover {
+  background: var(--color06) !important;
+  border: 1px solid var(--color02) !important;
+  border-radius: 0px;
+}
+
+[class*="checkmark__714a9"] {
+  color: var(--color04) !important;
+}
+
+/* ============================MESSAGES TAB==================== */
+
+/* explore discoverable servers button */
+[class*="container_a14595"] {
+  background: black !important;
 }
