@@ -41,6 +41,11 @@ window#waybar menuitem {
   animation: terminal-glow 7.5s ease-in-out infinite alternate;
 }
 
+window#waybar menuitem:hover {
+  background: rgba(5, 39, 54, 0.75);
+  border: 1px solid @foreground;
+}
+
 @keyframes terminal-glow {
   from {
     text-shadow:

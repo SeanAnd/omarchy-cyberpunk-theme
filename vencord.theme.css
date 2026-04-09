@@ -1,3 +1,10 @@
+/**
+ * @name Cyberpunk
+ * @author https://github.com/seanand
+ * @description A Cyberpunk 2077 inspired theme. I took inspiration from the messages menu, pause screen and text messages to create the theme.
+ * @version 1.0.0
+ */
+
 :root {
   --color00: #320000; /* background color  */
   --color01: #9a0000;
@@ -408,16 +415,10 @@
 
 [class*="channelTextArea_f75fb0"] {
   background: transparent !important;
+  position: relative !important;
   --panel-border-size: 1px;
   --panel-bevel-outer: 15px;
   --panel-bevel-inner: 15px;
-
-  isolation: isolate;
-}
-
-[class*="channelTextArea_f75fb0"] {
-  position: relative;
-  isolation: isolate;
 }
 
 [class*="channelTextArea_f75fb0"]:focus-within {
@@ -458,10 +459,27 @@
   pointer-events: none;
 }
 
-/* keep real content above the layers */
-[class*="channelTextArea_f75fb0"] > * {
+/* keep real content above the layers. The not fixes the autocomplete borking up the text area when tagging people */
+[class*="channelTextArea_f75fb0"] > *:not(.autocomplete__13533) {
   position: relative;
   z-index: 1;
+}
+
+/* this modifies the spine/eblow for replies */
+[class*="repliedMessageClickableSpine_c19a55"] {
+  border-color: var(--color06) !important;
+}
+
+[class*="repliedMessageClickableSpine_c19a55"]:hover {
+  border-color: var(--color02) !important;
+}
+/* gif favorite button when you hover a gif */
+[class*="gifFavoriteButton_b7e1cb"] {
+  background: transparent !important;
+}
+
+[class*="gifFavoriteButton_b7e1cb"]:hover {
+  background: var(--color06) !important;
 }
 
 /*============================+TOOLTIPS======================*/
