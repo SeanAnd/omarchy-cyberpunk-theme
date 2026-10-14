@@ -18,13 +18,13 @@
 @keyframes terminal-glow {
   from {
     text-shadow:
-      0 0 1px @glow,
-      0 0 2px @glow;
+      0 0 1px var(--color03),
+      0 0 2px var(--color03);
   }
   to {
     text-shadow:
-      0 0 3px @glow,
-      0 0 4px @glow;
+      0 0 3px var(--color03),
+      0 0 4px var(--color03);
   }
 }
 

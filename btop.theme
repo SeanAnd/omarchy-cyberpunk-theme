@@ -61,7 +61,7 @@ theme[upload_mid]="#ffcf3d"
 theme[upload_end]="#27a75c"
 
 # Thnks fr th Mmrs
-theme[free_start]="27a75c"
+theme[free_start]="#27a75c"
 theme[free_mid]="#ffcf3d"
 theme[free_end]="#ff1100"
 
